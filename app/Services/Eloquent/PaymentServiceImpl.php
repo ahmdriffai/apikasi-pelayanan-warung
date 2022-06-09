@@ -7,7 +7,8 @@ use App\Http\Requests\PaymentAddRequest;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Services\PaymentService;
-use Illuminate\Support\Carbon;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Storage;
 
 class PaymentServiceImpl implements PaymentService
 {
@@ -46,5 +47,23 @@ class PaymentServiceImpl implements PaymentService
         }
 
         return $refund;
+    }
+
+
+    function addStokeUrl(int $paymentId, string $cash): Payment
+    {
+        $payment = Payment::find($paymentId);
+
+        $pdf = PDF::loadView('pdf.stroke', compact('payment'));
+
+        $path = 'payment/stroke/';
+        $nameFile = uniqid() . time(). '.pdf';
+
+        Storage::disk('public')->put($path . $nameFile, $pdf->output());
+
+        $payment->stroke_url = public_path('storage/' . $path . $nameFile);
+        $payment->save();
+
+        return $payment;
     }
 }

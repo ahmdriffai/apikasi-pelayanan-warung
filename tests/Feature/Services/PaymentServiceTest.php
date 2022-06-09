@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Services;
 
+use App\Exceptions\InvariantException;
 use App\Http\Requests\PaymentAddRequest;
 use App\Models\Menu;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Table;
 use App\Services\PaymentService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -67,6 +69,50 @@ class PaymentServiceTest extends TestCase
         $this->assertDatabaseHas('orders', [
             'status' => 'paid',
         ]);
+    }
+
+    public function test_add_payment_when_cash_less_than_amount_paid()
+    {
+        $this->expectException(InvariantException::class);
+        $menu1 = Menu::factory()->create(['price' => 10000]);
+        $menu2 = Menu::factory()->create(['price' => 20000]);
+        $table = Table::factory()->create();
+
+        $menu = [$menu1->id, $menu2->id];
+        $order = new Order([
+            'customer_name' => 'fai',
+            'table_id' => $table->id,
+            'status' => 'pending',
+            'note' => 'catatan',
+        ]);
+        $order->save();
+
+        for($i = 0; $i < 2; $i++){
+            $order->menus()->attach($menu[$i],['quantity' => 1]);
+        }
+
+        $request = new PaymentAddRequest([
+            'order_id' => $order->id,
+            'cash' => 20000
+        ]);
+
+        $this->paymentService->addPayment($request);
+
+        $this->assertDatabaseCount('payments', 0);
+    }
+
+    public function test_add_stoke_file_url()
+    {
+        $payment = Payment::factory()->create(['stroke_url' => null]);
+
+        $result = $this->paymentService->addStokeUrl($payment->id, 2000);
+
+
+        self::assertNotNull($result->stroke_url);
+
+        self::assertFileExists($result->stroke_url);
+
+        @unlink($result->stroke_url);
     }
 
 

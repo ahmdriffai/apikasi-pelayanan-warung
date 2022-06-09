@@ -202,6 +202,7 @@ return [
         App\Providers\PaymentServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
 
 
 
