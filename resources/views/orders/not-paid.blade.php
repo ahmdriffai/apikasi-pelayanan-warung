@@ -59,7 +59,7 @@
                 </div>
                 <div class="card-footer">
                     @role('cashier')
-                    <a href="{{ route('orders.paid', $order->id) }}" class="btn btn-primary mb-3">
+                    <a href="{{ route('payments.create', $order->id) }}" class="btn btn-primary mb-3">
                         <span class="tf-icons bx bx-credit-card"></span> Bayar
                     </a>
                     @endrole

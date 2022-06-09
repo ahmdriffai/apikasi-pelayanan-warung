@@ -26,7 +26,9 @@ class PaymentController extends Controller
     }
 
     public function create(int $orderId) {
-        return view('payments.create', compact('orderId'));
+        $title = 'Pembayaran Pesanan';
+        $order = Order::find($orderId);
+        return view('payments.create', compact('orderId', 'title', 'order'));
     }
 
     public function store(PaymentAddRequest $request) {

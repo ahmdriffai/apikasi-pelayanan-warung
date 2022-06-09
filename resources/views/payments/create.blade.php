@@ -11,16 +11,16 @@
         <div class="col-xl-10">
             <div class="card mb-4">
                 <div class="card-body">
-                    <div class="mb-3">
-                        <label class="form-label" for="basic-default-email">Email <span class="text-danger">*</span></label>
+                    @include('components.detail-order')
+                    <div class="mb-3 mt-5">
+                        <label class="form-label" for="basic-default-email">Uang Tunai <span class="text-danger">*</span></label>
                         <div class="input-group input-group-merge">
-                            {!! Form::text('email', null, array('placeholder' => 'Email Karyawan','class' => 'form-control')) !!}
+                            <span class="input-group-text">Rp.</span>
+                            {!! Form::text('email', null, array('placeholder' => '50000','class' => 'form-control')) !!}
                         </div>
-                        <div class="form-text">Bisa pakai huruf, angka & titik</div>
                     </div>
 
-
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">Bayar</button>
                 </div>
             </div>
         </div>

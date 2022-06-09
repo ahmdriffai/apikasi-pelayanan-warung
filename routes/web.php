@@ -50,7 +50,7 @@ Route::middleware(['auth'])->group(function() {
 
     // payment
     Route::resource('payments', \App\Http\Controllers\PaymentController::class)->only(['index', 'store']);
-    Route::post('payments/create/{orderId}', [\App\Http\Controllers\PaymentController::class, 'store']);
+    Route::get('payments/create/{orderId}', [\App\Http\Controllers\PaymentController::class, 'create'])->name('payments.create');
 });
 
 // Test
