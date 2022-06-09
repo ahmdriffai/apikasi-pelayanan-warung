@@ -25,7 +25,6 @@ class PaymentAddRequest extends FormRequest
     {
         return [
             'order_id' => 'required',
-            'amout_paid' => 'required',
             'cash' => 'required',
         ];
     }

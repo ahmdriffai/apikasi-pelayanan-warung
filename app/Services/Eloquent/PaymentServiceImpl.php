@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PaymentServiceImpl implements PaymentService
 {
-
-    function addPayment(PaymentAddRequest $request): int
+    function addPayment(PaymentAddRequest $request): Payment
     {
         $order = Order::find($request->input('order_id'));
         $cash = $request->input('cash');
@@ -28,8 +27,6 @@ class PaymentServiceImpl implements PaymentService
         if ($amountPaid > $cash) {
             throw new InvariantException('Gagal membayar pesanan, uang tunai tidak mencukupi untuk membayar');
         }
-
-        $refund = $cash - $amountPaid;
 
         try {
             $payment = new Payment([
@@ -46,7 +43,7 @@ class PaymentServiceImpl implements PaymentService
             throw new InvariantException($exception->getMessage());
         }
 
-        return $refund;
+        return $payment;
     }
 
 
@@ -65,5 +62,10 @@ class PaymentServiceImpl implements PaymentService
         $payment->save();
 
         return $payment;
+    }
+
+    function getRefund(int $amuntPaid, int $cash)
+    {
+        return $cash - $amuntPaid;
     }
 }

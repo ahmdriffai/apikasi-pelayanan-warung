@@ -57,7 +57,7 @@ class PaymentServiceTest extends TestCase
 
         $result = $this->paymentService->addPayment($request);
 
-        self::assertEquals(10000, $result);
+        self::assertEquals(10000, $this->paymentService->getRefund($result->amount_paid, $request->cash));
 
         $this->assertDatabaseCount('payments' , 1);
 

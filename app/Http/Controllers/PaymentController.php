@@ -33,7 +33,11 @@ class PaymentController extends Controller
 
     public function store(PaymentAddRequest $request) {
         try {
-            $this->paymentService->addPayment($request);
+            $cash = $request->input('cash');
+            $payment = $this->paymentService->addPayment($request);
+            $this->paymentService->addStokeUrl($payment->id, $cash);
+            $refund = $this->paymentService->getRefund($payment->amount_paid, $cash);
+            return redirect()->back()->with(['success', 'Berhasil membayar pesanan', 'refund' => $refund, 'cash' => $request->input('cash')]);
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
