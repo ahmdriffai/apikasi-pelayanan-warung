@@ -8,7 +8,7 @@
                 <div class="card mb-3">
                     <div class="row g-0">
                         <div class="col-md-4">
-                            <img class="card-img card-img-left" src="{{asset($menu->imageUrl)}}" alt="Card image"/>
+                            <img class="card-img card-img-left" src="{{asset($menu->image_url)}}" alt="Card image"/>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

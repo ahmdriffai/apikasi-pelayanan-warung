@@ -26,7 +26,7 @@ class PaymentController extends Controller
     }
 
     public function create(int $orderId) {
-        return view('payments.crate', compact('orderId'));
+        return view('payments.create', compact('orderId'));
     }
 
     public function store(PaymentAddRequest $request) {
