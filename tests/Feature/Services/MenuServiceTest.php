@@ -55,6 +55,8 @@ class MenuServiceTest extends TestCase
            'description' => 'desc',
             'category_id' => $category->id,
             'image_url' => null,
+            'image_path' => null,
+
         ]);
     }
 
@@ -66,12 +68,16 @@ class MenuServiceTest extends TestCase
 
         $result = $this->menuService->addImageUrl($payment->id, $file);
 
+        $this->assertDatabaseHas('menus', [
+           'image_url' => $result->image_url,
+           'image_path' => $result->image_path,
+        ]);
 
         self::assertNotNull($result->image_url);
 
-        self::assertFileExists($result->image_url);
+        self::assertFileExists($result->image_path);
 
-        @unlink($result->image_url);
+        @unlink($result->image_path);
     }
 
 }

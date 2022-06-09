@@ -15,6 +15,8 @@ class MenuControllerTest extends TestCase
 
     public function test_store_menu_success()
     {
+
+        dd(public_path(''));
         $category = Category::factory()->create();
         $response = $this->post('/menus', [
             'name' => 'test',

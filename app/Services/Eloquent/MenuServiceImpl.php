@@ -47,9 +47,11 @@ class MenuServiceImpl implements MenuService
         $menu = Menu::find($menuId);
 
         $dataFile = $this->uploads($file, 'menu/image/');
-        $imageUrl = public_path('storage/'. $dataFile['filePath']);
+        $imageUrl = asset('storage/'. $dataFile['filePath']);
+        $imagePath = public_path('storage/'. $dataFile['filePath']);
 
         $menu->image_url = $imageUrl;
+        $menu->image_path = $imagePath;
         $menu->save();
 
         return $menu;

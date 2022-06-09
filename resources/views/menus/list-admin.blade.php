@@ -25,7 +25,7 @@
                     <td>{{ ++$i }}</td>
                     <td><i class="fa-lg text-danger"></i><strong>{{ $value->name }}</strong></td>
                     <td>
-                        <img src="{{ $value->imageUrl }}" class="img-fluid rounded-1" width="100px" height="100px">
+                        <img src="{{ $value->image_url }}" class="img-fluid rounded-1" width="100px" height="100px">
                     </td>
                     <td>{!! substr($value->description, 0, 200) !!} ...</td>
                     <td><strong>Rp. {{ number_format($value->price) }}</strong></td>
