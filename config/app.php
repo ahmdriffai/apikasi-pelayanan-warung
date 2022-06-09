@@ -199,6 +199,7 @@ return [
         App\Providers\MenuServiceProvider::class,
         App\Providers\MenuCartServiceProvider::class,
         App\Providers\OrderServiceProvider::class,
+        App\Providers\PaymentServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
 

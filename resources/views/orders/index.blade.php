@@ -90,7 +90,7 @@
                     @endrole
                 </ul>
                 <div class="tab-content">
-                    @role('kithcen|waiter')
+                    @role('kitchen|waiter')
                     <div class="tab-pane fade show active" id="navs-justified-pending" role="tabpanel">
                         @include('orders.pending')
                     </div>
