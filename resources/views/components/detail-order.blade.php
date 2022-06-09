@@ -29,7 +29,7 @@
         </li>
         <li class="d-flex justify-content-between align-items-center px-3 mt-3">
             <strong> Total Pesanan </strong>
-            <strong> {{ $menu->pivot->count('quantity') }} item</strong>
+            <strong> {{ $menu->pivot->where('order_id', $order->id)->sum('quantity') }} item</strong>
         </li>
         <li class="d-flex justify-content-between align-items-center px-3 mt-3">
             <strong> Jumlah Bayar </strong>

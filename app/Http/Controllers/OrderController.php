@@ -30,7 +30,7 @@ class OrderController extends Controller
         $cooking = Order::where('status','process')->orderBy('created_at', 'DESC')->paginate(5);
         $done = Order::where('status','done')->orderBy('created_at', 'DESC')->paginate(5);
         $paid = Order::where('status','paid')->orderBy('created_at', 'DESC')->paginate(5);
-        $notPaid = Order::where('status','!=','paid')->orderBy('created_at', 'DESC')->paginate(5);
+        $notPaid = Order::where('status','!=','paid')->where('status', '!=', 'cancel')->orderBy('created_at', 'DESC')->paginate(5);
 
         return view('orders.index', compact('pending', 'cooking', 'done', 'paid', 'notPaid'));
     }

@@ -41,7 +41,48 @@
                         <div class="form-text"> *Kosongkan jika tidak ada catatan </div>
                     </div>
 
-                    @include('components.detail-order')
+
+                    <div class="col-lg-12 mb-4 mb-xl-0 mb-3">
+                        <label class="form-label" for="basic-default-fullname">Detail Pesanan</label>
+                        <ul class="list-group">
+                            @php
+                                $jumlahBayar = 0;
+                            @endphp
+                            @foreach($menuCarts as $value)
+                                <input type="hidden" name="menu_id[]" value="{{ $value->menu->id }}">
+                                <input type="hidden" name="quantity[]" value="{{ $value->quantity }}">
+                                @php
+                                    $jumlah = $value->quantity * $value->menu->price;
+                                    $jumlahBayar += $jumlah;
+                                @endphp
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <a href="{{ route('menu-carts.delete', $value->id) }}" class="btn btn-sm">
+                                            <i class="bx bx-trash"></i>
+                                        </a>
+                                        <img src="{{ $value->menu->image_url }}" class="img-fluid rounded-1 me-2" width="80px" height="80px">
+                                        <div class="">
+                                            {{ $value->menu->name }}
+                                            <br>
+                                            x {{ $value->quantity }}
+                                        </div>
+                                    </div>
+                                    Rp. {{ number_format($value->menu->price) }}
+                                </li>
+                            @endforeach
+                            <li class="d-flex justify-content-between align-items-center px-3 mt-3">
+                                <strong> Total Pesanan </strong>
+                                <strong> {{ $menuCarts->sum('quantity') }} item</strong>
+                            </li>
+                            <li class="d-flex justify-content-between align-items-center px-3 mt-3">
+                                <strong> Jumlah Bayar </strong>
+                                <strong> Rp. {{ number_format($jumlahBayar) }}</strong>
+                            </li>
+                        </ul>
+                    </div>
+
+
+
 
                     <button type="submit" class="btn btn-primary mt-3">Pesan</button>
                     {!! Form::close() !!}
