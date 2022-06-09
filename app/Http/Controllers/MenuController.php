@@ -45,12 +45,9 @@ class MenuController extends Controller
     public function store(MenuAddRequest $request)
     {
         try {
+            $result = $this->menuService->addMenu($request);
 
-            $dataFile = $this->uploads($request->file('image'), 'menu/image/');
-
-            $imageUrl = asset('storage/'. $dataFile['filePath']);
-
-            $result = $this->menuService->addMenu($request, $imageUrl);
+            $this->menuService->addImageUrl($result->id, $request->file('image'));
 
             return redirect()->back()->with('success', 'Berhasil Menambah Menu Baru ');
         }catch (InvariantException $exception) {

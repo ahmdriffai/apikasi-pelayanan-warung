@@ -8,6 +8,7 @@ use App\Models\Menu;
 use App\Services\MenuService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class MenuServiceTest extends TestCase
@@ -39,9 +40,7 @@ class MenuServiceTest extends TestCase
             'category_id' => $category->id,
         ]);
 
-        $imagePath = '/storage/image/test.jpg';
-
-        $this->menuService->addMenu($request, $imagePath);
+        $this->menuService->addMenu($request);
 
         $menu = Menu::first();
 
@@ -54,9 +53,25 @@ class MenuServiceTest extends TestCase
            'name' => 'nasgor',
            'price' => 2000,
            'description' => 'desc',
-            'category_id' => $category->id
+            'category_id' => $category->id,
+            'image_url' => null,
         ]);
     }
 
+    public function test_add_image_url()
+    {
+        $payment = Menu::factory()->create(['image_url' => null]);
+
+        $file = UploadedFile::fake()->image('avatar.jpg');
+
+        $result = $this->menuService->addImageUrl($payment->id, $file);
+
+
+        self::assertNotNull($result->image_url);
+
+        self::assertFileExists($result->image_url);
+
+        @unlink($result->image_url);
+    }
 
 }

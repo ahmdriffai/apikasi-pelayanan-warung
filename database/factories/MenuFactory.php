@@ -21,7 +21,7 @@ class MenuFactory extends Factory
             'name' => $this->faker->name(),
             'price' => rand(20000, 30000),
             'description' => $this->faker->text(),
-            'imageUrl' => $this->faker->imageUrl(),
+            'image_url' => $this->faker->imageUrl(),
             'category_id' => Category::factory()->create(['name' => 'Makanan']),
         ];
     }

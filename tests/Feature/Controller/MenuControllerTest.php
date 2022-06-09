@@ -31,7 +31,9 @@ class MenuControllerTest extends TestCase
         $menu = Menu::first();
 
 
-        self::assertNotNull($menu->imageUrl);
+        self::assertNotNull($menu->image_url);
+
+        @unlink($menu->image_url);
 
     }
 }

@@ -14,7 +14,7 @@ class MenuServiceImpl implements MenuService
 {
     use Media;
 
-    function addMenu(MenuAddRequest $request, $imageUrl): Menu
+    function addMenu(MenuAddRequest $request): Menu
     {
         $name = $request->input('name');
         $price = $request->input('price');
@@ -28,7 +28,7 @@ class MenuServiceImpl implements MenuService
                 'name' => $name,
                 'price' => $price,
                 'description' => $description,
-                'imageUrl' => $imageUrl,
+                'imageUrl' => null,
             ]);
 
             $category->menus()->save($menu);
@@ -38,6 +38,19 @@ class MenuServiceImpl implements MenuService
             DB::rollBack();
             throw new InvariantException($exception->getMessage());
         }
+
+        return $menu;
+    }
+
+    function addImageUrl(int $menuId, $file): Menu
+    {
+        $menu = Menu::find($menuId);
+
+        $dataFile = $this->uploads($file, 'menu/image/');
+        $imageUrl = public_path('storage/'. $dataFile['filePath']);
+
+        $menu->image_url = $imageUrl;
+        $menu->save();
 
         return $menu;
     }

@@ -7,5 +7,6 @@ use App\Models\Menu;
 
 interface MenuService
 {
-    function addMenu(MenuAddRequest $request, string $imageUrl): Menu;
+    function addMenu(MenuAddRequest $request): Menu;
+    function addImageUrl(int $menuId, $file): Menu;
 }

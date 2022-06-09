@@ -101,7 +101,7 @@ class PaymentServiceTest extends TestCase
         $this->assertDatabaseCount('payments', 0);
     }
 
-    public function test_add_stoke_file_url()
+    public function test_add_stroke_file_url()
     {
         $payment = Payment::factory()->create(['stroke_url' => null]);
 
