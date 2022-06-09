@@ -30,7 +30,7 @@
                                 @endphp
                                 <li class="list-group-item d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center justify-content-between">
-                                        <img src="{{ $menu->imageUrl }}" class="img-fluid rounded-1 me-2" width="80px" height="80px">
+                                        <img src="{{ $menu->image_url }}" class="img-fluid rounded-1 me-2" width="80px" height="80px">
                                         <div class="">
                                             {{ $menu->name }}
                                             <br>

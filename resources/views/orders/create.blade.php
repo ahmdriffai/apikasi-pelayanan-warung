@@ -60,7 +60,7 @@
                                         <a href="{{ route('menu-carts.delete', $value->id) }}" class="btn btn-sm">
                                             <i class="bx bx-trash"></i>
                                         </a>
-                                        <img src="{{ $value->menu->imageUrl }}" class="img-fluid rounded-1 me-2" width="80px" height="80px">
+                                        <img src="{{ $value->menu->image_url }}" class="img-fluid rounded-1 me-2" width="80px" height="80px">
                                         <div class="">
                                             {{ $value->menu->name }}
                                             <br>
