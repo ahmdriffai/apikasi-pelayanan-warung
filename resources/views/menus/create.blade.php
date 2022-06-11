@@ -10,9 +10,6 @@
     <div class="row">
         <div class="col-xl-10">
             <div class="card mb-4">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <small class="text-muted float-end">*Password user akan kami kirim lewat email yang didaftarkan</small>
-                </div>
                 <div class="card-body">
                     <form>
                         <div class="mb-3">

@@ -31,7 +31,7 @@ class MenuControllerTest extends TestCase
 
         $menu = Menu::first();
 
-
+        self::assertFileExists($menu->image_path);
         self::assertNotNull($menu->image_url);
 
         @unlink($menu->image_path);

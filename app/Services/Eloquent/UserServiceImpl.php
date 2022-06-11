@@ -30,7 +30,8 @@ class UserServiceImpl implements UserService
             $user->password = $hashPassword;
             $user->save();
 
-            $user->employee()->associate($user);
+            $employee->user_id = $user->id;
+            $employee->save();
 
             $user->assignRole($roles);
             DB::commit();

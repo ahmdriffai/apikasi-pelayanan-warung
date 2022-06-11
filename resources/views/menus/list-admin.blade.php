@@ -7,7 +7,7 @@
             <h5 class="card-header">Daftar User</h5>
         </div>
     </div>
-    <div class="text-nowrap">
+    <div class="text-nowrap table-responsive">
         <table class="table">
             <thead>
             <tr>
@@ -27,7 +27,7 @@
                     <td>
                         <img src="{{ $value->image_url }}" class="img-fluid rounded-1" width="100px" height="100px">
                     </td>
-                    <td>{!! substr($value->description, 0, 200) !!} ...</td>
+                    <td>{!! substr($value->description, 0, 100) !!} ...</td>
                     <td><strong>Rp. {{ number_format($value->price) }}</strong></td>
                     <td>
                         <div class="dropdown">

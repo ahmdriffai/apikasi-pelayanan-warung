@@ -200,6 +200,7 @@ return [
         App\Providers\MenuCartServiceProvider::class,
         App\Providers\OrderServiceProvider::class,
         App\Providers\PaymentServiceProvider::class,
+        App\Providers\EmployeeServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,

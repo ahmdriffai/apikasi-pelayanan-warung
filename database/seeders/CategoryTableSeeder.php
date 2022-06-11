@@ -18,6 +18,7 @@ class CategoryTableSeeder extends Seeder
         Category::create([
             'name' => 'Makanan',
         ]);
+
         Category::create([
             'name' => 'Minuman',
         ]);

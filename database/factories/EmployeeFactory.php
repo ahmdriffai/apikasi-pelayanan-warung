@@ -20,7 +20,7 @@ class EmployeeFactory extends Factory
             //
             'name' => $this->faker->name(),
             'telp' => $this->faker->phoneNumber(),
-            'imageUrl' => $this->faker->imageUrl(),
+            'image_url' => $this->faker->imageUrl(),
             'user_id' => null,
             'address' => $this->faker->address(),
         ];

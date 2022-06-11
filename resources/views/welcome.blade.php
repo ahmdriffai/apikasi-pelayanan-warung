@@ -16,14 +16,14 @@
                 <div class="col-sm-6 col-lg-3 mb-4">
                     <a href="" class="text-black custom-card">
                         <div class="card p-3">
-                            <img class="card-img-top" src="{{asset('vendor/assets/img/elements/5.jpg')}}" alt="Card image cap" />
+                            <img class="card-img-top" src="{{ $menu->image_url }}" alt="Card image cap" />
                             <figure class="p-3 mb-0">
                                 <blockquote class="blockquote">
                                     <h4 class="fw-bold">{{ $menu->name }}</h4>
                                     <p class="fs-5"> Rp. {{ number_format($menu->price) }}</p>
                                 </blockquote>
                                 <figcaption class="blockquote-footer mb-0 text-warning">
-                                    {{ substr($menu->description, 0, 200) }}
+                                    {!! substr($menu->description, 0, 200) !!}
                                 </figcaption>
                             </figure>
                         </div>

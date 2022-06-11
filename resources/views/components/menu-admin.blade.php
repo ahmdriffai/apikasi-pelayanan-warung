@@ -1,12 +1,13 @@
 <!-- Dashboard -->
 <li class="menu-header small text-uppercase"><span class="menu-header-text">Menu Admin</span></li>
 
-<li class="menu-item">
-    <a href="index.html" class="menu-link">
+<li class="menu-item {{ Route::is('employees.*') ? 'active' : '' }}">
+    <a href="{{ route('employees.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-user"></i>
-        <div data-i18n="Analytics">Kariawan</div>
+        <div data-i18n="Analytics">Karyawan</div>
     </a>
 </li>
+
 
 <li class="menu-item {{ Route::is('menus.*') ? 'active' : '' }}">
     <a href="{{ route('menus.index') }}" class="menu-link">
