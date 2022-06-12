@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('customer_name');
             $table->foreignId('table_id')->constrained();
             $table->enum('status', ['pending', 'process', 'done', 'paid', 'cancel']);
-            $table->text('note')->default('-')->nullable();
+            $table->text('note')->nullable();
             $table->timestamps();
         });
     }
