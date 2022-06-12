@@ -30,21 +30,34 @@
     </a>
 </li>
 
-<li class="menu-item {{ Route::is('users.*') ? 'active open' : '' }}">
-    <a href="javascript:void(0);" class="menu-link menu-toggle">
-        <i class="menu-icon tf-icons bx bx-user-circle"></i>
-        <div data-i18n="Form Elements">User Manajemen</div>
+<li class="menu-item {{ Route::is('tables.*') ? 'active' : '' }}">
+    <a href="{{ route('menus.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-clipboard"></i>
+        <div data-i18n="Analytics">Pesanan</div>
     </a>
-    <ul class="menu-sub">
-        <li class="menu-item  {{ Route::is('users.*') ? 'active' : '' }}">
-            <a href="{{ route('users.index') }}" class="menu-link">
-                <div data-i18n="Basic Inputs">User</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="forms-input-groups.html" class="menu-link">
-                <div data-i18n="Input groups">Hak Akses</div>
-            </a>
-        </li>
-    </ul>
 </li>
+<li class="menu-item {{ Route::is('tables.*') ? 'active' : '' }}">
+    <a href="{{ route('menus.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bx-credit-card"></i>
+        <div data-i18n="Analytics">Pembayaran</div>
+    </a>
+</li>
+
+{{--<li class="menu-item {{ Route::is('users.*') ? 'active open' : '' }}">--}}
+{{--    <a href="javascript:void(0);" class="menu-link menu-toggle">--}}
+{{--        <i class="menu-icon tf-icons bx bx-user-circle"></i>--}}
+{{--        <div data-i18n="Form Elements">User Manajemen</div>--}}
+{{--    </a>--}}
+{{--    <ul class="menu-sub">--}}
+{{--        <li class="menu-item  {{ Route::is('users.*') ? 'active' : '' }}">--}}
+{{--            <a href="{{ route('users.index') }}" class="menu-link">--}}
+{{--                <div data-i18n="Basic Inputs">User</div>--}}
+{{--            </a>--}}
+{{--        </li>--}}
+{{--        <li class="menu-item">--}}
+{{--            <a href="forms-input-groups.html" class="menu-link">--}}
+{{--                <div data-i18n="Input groups">Hak Akses</div>--}}
+{{--            </a>--}}
+{{--        </li>--}}
+{{--    </ul>--}}
+{{--</li>--}}

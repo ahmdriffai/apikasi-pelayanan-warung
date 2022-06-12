@@ -31,7 +31,21 @@ class MenuController extends Controller
         $paginate = 10;
         $categories = Category::all();
         $menuCarts = MenuCart::where('user_id', Auth::user()->id)->get();
-        $data = Menu::paginate($paginate);
+        $data = Menu::gitorderBy('created_at', 'DESC')->paginate($paginate);
+        return view('menus.index', compact('data', 'title', 'categories', 'menuCarts'))
+            ->with('i', ($request->input('page', 1) - 1) * $paginate);
+    }
+
+    public function search(Request $request) {
+        $key = $request->input('key');
+
+        $title = 'Menu';
+        $paginate = 10;
+        $menuCarts = MenuCart::where('user_id', Auth::user()->id)->get();
+        $categories = Category::with('menus')
+            ->whereRelation('menus', 'name', 'like', '%'.$key.'%')
+            ->get();
+        $data = Menu::where('name', 'like', '%'.$key.'%')->orderBy('created_at', 'DESC')->paginate($paginate);
         return view('menus.index', compact('data', 'title', 'categories', 'menuCarts'))
             ->with('i', ($request->input('page', 1) - 1) * $paginate);
     }
@@ -49,7 +63,7 @@ class MenuController extends Controller
 
             $this->menuService->addImageUrl($result->id, $request->file('image'));
 
-            return redirect()->back()->with('success', 'Berhasil Menambah Menu Baru ');
+            return redirect()->route('menus.index')->with('success', 'Berhasil Menambah Menu Baru ');
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
@@ -57,7 +71,7 @@ class MenuController extends Controller
 
     public function show($id)
     {
-        //
+        //e
     }
 
     public function edit($id)
