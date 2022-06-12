@@ -201,6 +201,7 @@ return [
         App\Providers\OrderServiceProvider::class,
         App\Providers\PaymentServiceProvider::class,
         App\Providers\EmployeeServiceProvider::class,
+        App\Providers\CategoryServiceProvider::class,
 
         Spatie\Permission\PermissionServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,

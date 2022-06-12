@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('users', \App\Http\Controllers\UserController::class);
     Route::post('users/search', [\App\Http\Controllers\UserController::class, 'search'])->name('users.search');
     // category
-    Route::resource('categories', \App\Http\Controllers\MenuController::class);
+    Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['create', 'show']);
     // Table
     Route::resource('tables', \App\Http\Controllers\MenuController::class);
     // Menu
