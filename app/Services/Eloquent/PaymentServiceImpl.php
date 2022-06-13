@@ -58,7 +58,8 @@ class PaymentServiceImpl implements PaymentService
 
         Storage::disk('public')->put($path . $nameFile, $pdf->output());
 
-        $payment->stroke_url = public_path('storage/' . $path . $nameFile);
+        $payment->stroke_url = asset('storage/' . $path . $nameFile);
+        $payment->stroke_path = public_path('storage/' . $path . $nameFile);
         $payment->save();
 
         return $payment;

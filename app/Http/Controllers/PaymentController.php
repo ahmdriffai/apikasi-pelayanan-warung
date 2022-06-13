@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exceptions\InvariantException;
 use App\Http\Requests\PaymentAddRequest;
 use App\Models\Order;
+use App\Models\Payment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
 
@@ -21,8 +22,12 @@ class PaymentController extends Controller
     }
 
 
-    public function index() {
-        return 'index';
+    public function index(Request $request) {
+        $title = 'Data Pembayaran';
+        $paginate = 10;
+        $data = Payment::orderBy('created_at', 'DESC')->paginate($paginate);
+        return view('payments.index', compact('data', 'title'))
+            ->with('i', ($request->input('page', 1) - 1) * $paginate);
     }
 
     public function create(int $orderId) {

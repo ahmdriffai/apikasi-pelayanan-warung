@@ -30,14 +30,14 @@
     </a>
 </li>
 
-<li class="menu-item {{ Route::is('tables.*') ? 'active' : '' }}">
-    <a href="{{ route('menus.index') }}" class="menu-link">
+<li class="menu-item {{ Route::is('orders.*') ? 'active' : '' }}">
+    <a href="{{ route('orders.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-clipboard"></i>
         <div data-i18n="Analytics">Pesanan</div>
     </a>
 </li>
-<li class="menu-item {{ Route::is('tables.*') ? 'active' : '' }}">
-    <a href="{{ route('menus.index') }}" class="menu-link">
+<li class="menu-item {{ Route::is('payments.*') ? 'active' : '' }}">
+    <a href="{{ route('payments.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-credit-card"></i>
         <div data-i18n="Analytics">Pembayaran</div>
     </a>

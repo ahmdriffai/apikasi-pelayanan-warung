@@ -24,15 +24,20 @@ class OrderController extends Controller
     }
 
 
-    public function index()
+    public function index(Request $request)
     {
+        $paginate = 10;
+        $orders = Order::paginate($paginate);
+
         $pending = Order::where('status','pending')->orderBy('created_at', 'DESC')->paginate(5);
         $cooking = Order::where('status','process')->orderBy('created_at', 'DESC')->paginate(5);
         $done = Order::where('status','done')->orderBy('created_at', 'DESC')->paginate(5);
         $paid = Order::where('status','paid')->orderBy('created_at', 'DESC')->paginate(5);
         $notPaid = Order::where('status','!=','paid')->where('status', '!=', 'cancel')->orderBy('created_at', 'DESC')->paginate(5);
 
-        return view('orders.index', compact('pending', 'cooking', 'done', 'paid', 'notPaid'));
+        return view('orders.index', compact('pending', 'cooking', 'done', 'paid', 'notPaid', 'orders'))
+            ->with('i', ($request->input('page', 1) - 1) * $paginate);;
+
     }
 
 
