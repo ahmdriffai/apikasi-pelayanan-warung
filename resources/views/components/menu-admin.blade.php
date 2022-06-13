@@ -24,7 +24,7 @@
 </li>
 
 <li class="menu-item {{ Route::is('tables.*') ? 'active' : '' }}">
-    <a href="{{ route('menus.index') }}" class="menu-link">
+    <a href="{{ route('tables.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-chalkboard"></i>
         <div data-i18n="Analytics">Meja</div>
     </a>

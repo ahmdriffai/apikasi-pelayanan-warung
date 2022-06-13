@@ -36,7 +36,7 @@ Route::middleware(['auth'])->group(function() {
     // category
     Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['create', 'show']);
     // Table
-    Route::resource('tables', \App\Http\Controllers\MenuController::class);
+    Route::resource('tables', \App\Http\Controllers\TableController::class);
     // Menu
     Route::resource('menus', \App\Http\Controllers\MenuController::class);
     Route::get('menu/search', [\App\Http\Controllers\MenuController::class, 'search'])->name('menus.search');
