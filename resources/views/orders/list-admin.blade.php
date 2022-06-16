@@ -21,6 +21,7 @@
             </thead>
             <tbody class="table-border-bottom-0">
                 @foreach($orders as $order)
+                <tr>
                     <td>#</td>
                     <td>{{ $order->customer_name }}</td>
                     <td>{{ $order->menus()->pluck('name') }}</td>
@@ -36,9 +37,10 @@
                         @php $amount = 0 @endphp
                         @foreach($order->menus as $menu)
                             @php $amount += $menu->pivot->quantity * $menu->price@endphp
-                            Rp. {{ number_format($amount) }}
                         @endforeach
+                        Rp. {{ number_format($amount) }}
                     </td>
+                </tr>
                 @endforeach
             </tbody>
         </table>

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\InvariantException;
+use App\Exports\PaymentsExport;
 use App\Http\Requests\PaymentAddRequest;
 use App\Models\Order;
 use App\Models\Payment;
 use App\Services\PaymentService;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PaymentController extends Controller
 {
@@ -46,5 +48,9 @@ class PaymentController extends Controller
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
+    }
+
+    public function exsport() {
+        return Excel::download(new PaymentsExport(), 'users.xlsx');
     }
 }

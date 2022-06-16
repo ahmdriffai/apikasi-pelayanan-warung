@@ -54,6 +54,7 @@ Route::middleware(['auth'])->group(function() {
     // payment
     Route::resource('payments', \App\Http\Controllers\PaymentController::class)->only(['index', 'store']);
     Route::get('payments/create/{orderId}', [\App\Http\Controllers\PaymentController::class, 'create'])->name('payments.create');
+    Route::get('payments/export', [\App\Http\Controllers\PaymentController::class, 'exsport'])->name('payments.exsport');
 
     // employ
 

@@ -12,4 +12,7 @@ interface EmployeeService
     function addEmployee(EmployeeAddRequest $request): User;
     function updateEmployee(EmployeeUpdateRequest $request, $employeeId): Employee;
     function addImageUrl($file, int $employeeId): Employee;
+    function deleteEmployee($id): void;
+    function updateImage($file, $id): Employee;
+    function deleteImage($id): Employee;
 }
