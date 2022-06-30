@@ -56,6 +56,9 @@ class OrderServiceImpl implements OrderService
     function done(int $id): Order
     {
         $order = Order::find($id);
+        if ($order->status == 'save') {
+            throw new InvariantException('Pesanan sudah disimapn');
+        }
         try {
             $order->status = 'done';
             $order->save();
@@ -99,6 +102,21 @@ class OrderServiceImpl implements OrderService
 
         try {
             $order->status = 'cancel';
+            $order->save();
+        }catch (\Exception $exception) {
+            throw new InvariantException($exception->getMessage());
+        }
+        return $order;
+    }
+
+    function save(int $id): Order
+    {
+        $order = Order::find($id);
+        if ($order->status != 'done') {
+            throw new InvariantException('Pesanan gagal disimpan, selesaikan pesanan dulu sebelum disimpan');
+        }
+        try {
+            $order->status = 'save';
             $order->save();
         }catch (\Exception $exception) {
             throw new InvariantException($exception->getMessage());

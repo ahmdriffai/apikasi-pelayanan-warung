@@ -110,7 +110,7 @@ class PaymentServiceTest extends TestCase
 
         self::assertNotNull($result->stroke_url);
 
-        self::assertFileExists($result->stroke_url);
+        self::assertFileExists($result->stroke_path);
 
         @unlink($result->stroke_url);
     }

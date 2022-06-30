@@ -12,4 +12,5 @@ interface OrderService
     function process(int $id) : Order;
     function paid(int $id): Order;
     function cancel(int $id): Order;
+    function save(int $id) : Order;
 }

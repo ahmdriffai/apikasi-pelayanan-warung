@@ -24,7 +24,7 @@ class EmployeeController extends Controller
 
     public function index(Request $request)
     {
-        $title = 'Pelayan';
+        $title = 'Pengguna';
         $paginate = 10;
         $employees= Employee::paginate($paginate);
         return view('employees.index', compact('employees', 'title'))
@@ -34,7 +34,7 @@ class EmployeeController extends Controller
 
     public function create()
     {
-        $title = 'Tambah Karyawan';
+        $title = 'Tambah Pengguna';
         $roles = Role::pluck('name', 'name')->all();
         return view('employees.create', compact('title', 'roles'));
     }

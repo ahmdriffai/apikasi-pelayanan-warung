@@ -10,7 +10,6 @@
             <tr>
                 <th>#</th>
                 <th>Nomer Meja</th>
-                <th>Nama</th>
                 <th>Actions</th>
             </tr>
             </thead>
@@ -19,7 +18,6 @@
                 <tr>
                     <td>#</td>
                     <td><i class="fa-lg text-danger"></i><strong>{{ $table->number }}</strong></td>
-                    <td><i class="fa-lg text-danger"></i><strong>{{ $table->name }}</strong></td>
                     <td>
                         <a class="btn btn-sm btn-primary" href="{{ route('tables.edit',$table->id) }}">
                             <i class="bx bx-edit-alt me-1"></i> Edit

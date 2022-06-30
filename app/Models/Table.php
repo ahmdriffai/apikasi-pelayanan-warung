@@ -10,7 +10,7 @@ class Table extends Model
     use HasFactory;
 
     protected $fillable = [
-        'number', 'name', 'is_available'
+        'number', 'is_available'
     ];
 
     public function order() {

@@ -15,6 +15,6 @@ class MenuTableSeeder extends Seeder
      */
     public function run()
     {
-        Menu::factory(20)->create();
+        Menu::factory(1)->create();
     }
 }

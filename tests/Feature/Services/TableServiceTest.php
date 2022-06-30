@@ -32,7 +32,6 @@ class TableServiceTest extends TestCase
     {
         $request = new TableAddRequest([
             'number' => 1,
-            'name' => 'nama'
         ]);
 
         $result = $this->service->addTable($request);
@@ -40,7 +39,6 @@ class TableServiceTest extends TestCase
         $this->assertDatabaseCount('tables', 1);
         $this->assertDatabaseHas('tables', [
             'number' => 1,
-            'name' => 'nama',
         ]);
 
     }

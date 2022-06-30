@@ -7,6 +7,7 @@
     </a>
     <!-- Basic Layout -->
     {!! Form::open(array('route' => ['menus.update', $menu->id],'method'=>'POST', 'files' => true)) !!}
+    @method('PUT')
     <div class="row">
         <div class="col-xl-10">
             <div class="card mb-4">

@@ -17,8 +17,7 @@ class TableFactory extends Factory
     public function definition()
     {
         return [
-            'number' => 1,
-            'name' => 'Meja 001',
+            'number' => $this->faker->randomNumber(),
          ];
     }
 }

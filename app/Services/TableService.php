@@ -8,5 +8,4 @@ use App\Models\Table;
 interface TableService
 {
     function addTable(TableAddRequest $request): Table;
-
 }

@@ -30,8 +30,8 @@ class OrderController extends Controller
         $orders = Order::paginate($paginate);
 
         $pending = Order::where('status','pending')->orderBy('created_at', 'DESC')->paginate(5);
-        $cooking = Order::where('status','process')->orderBy('created_at', 'DESC')->paginate(5);
-        $done = Order::where('status','done')->orderBy('created_at', 'DESC')->paginate(5);
+        $cooking = Order::where('status','process')->orWhere('status' , 'done')->orderBy('created_at', 'DESC')->paginate(5);
+        $done = Order::where('status','save')->orderBy('created_at', 'DESC')->paginate(5);
         $paid = Order::where('status','paid')->orderBy('created_at', 'DESC')->paginate(5);
         $notPaid = Order::where('status','!=','paid')->where('status', '!=', 'cancel')->orderBy('created_at', 'DESC')->paginate(5);
 
@@ -81,7 +81,7 @@ class OrderController extends Controller
     public function cancel($id) {
         try {
             $this->orderService->cancel($id);
-            return redirect()->back()->with('success', 'Berhasil membatalka pesanan');
+            return redirect()->route('menus.index')->with('success', 'Berhasil membatalka pesanan');
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
@@ -91,6 +91,15 @@ class OrderController extends Controller
         try {
             $this->orderService->paid($id);
             return redirect()->back()->with('success', 'Pesanan berhasil terbayar');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
+    }
+
+    public function save($id) {
+        try {
+            $this->orderService->save($id);
+            return redirect()->back()->with('success', 'Pesanan berhasil disimpan');
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }

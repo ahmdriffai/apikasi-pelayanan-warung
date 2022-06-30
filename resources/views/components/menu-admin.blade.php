@@ -4,7 +4,7 @@
 <li class="menu-item {{ Route::is('employees.*') ? 'active' : '' }}">
     <a href="{{ route('employees.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-user"></i>
-        <div data-i18n="Analytics">Karyawan</div>
+        <div data-i18n="Analytics">Pengguna</div>
     </a>
 </li>
 

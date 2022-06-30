@@ -67,7 +67,7 @@ class OrderServiceTest extends TestCase
 
     }
 
-    public function test_order_done()
+    public function test_order_done_success()
     {
         $order = Order::factory()->create();
 
@@ -81,6 +81,40 @@ class OrderServiceTest extends TestCase
             'status' => 'done',
         ]);
     }
+
+    public function test_order_done_fail()
+    {
+        $this->expectException(InvariantException::class);
+
+        $order = Order::factory()->create(['status' => 'save']);
+
+        $this->orderService->done($order->id);
+    }
+
+    public function test_order_save_success()
+    {
+        $order = Order::factory()->create(['status' => 'done']);
+
+        $this->assertDatabaseHas('orders', [
+            'status' => 'done',
+        ]);
+
+        $this->orderService->save($order->id);
+
+        $this->assertDatabaseHas('orders', [
+            'status' => 'save',
+        ]);
+    }
+
+    public function test_order_save_fail()
+    {
+        $this->expectException(InvariantException::class);
+
+        $order = Order::factory()->create(['status' => 'save']);
+
+        $this->orderService->save($order->id);
+    }
+
 
     public function test_order_process()
     {

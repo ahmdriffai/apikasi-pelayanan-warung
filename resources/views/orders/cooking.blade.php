@@ -13,16 +13,20 @@
                     </div>
                     <div class="d-flex align-items-stretch justify-content-center">
                         <span class="tf-icons bx bx-cookie text-warning"></span>
-                        <h6 class="text-warning text-capitalize ms-2">Prosen Memasak</h6>
+                        <h6 class="text-warning text-capitalize ms-2">Pesanan Sedang Dimasak</h6>
                     </div>
                 </div>
                 <div class="card-body border-bottom">
                     @include('components.detail-order')
                 </div>
-                <div class="card-footer">
+                <div class="card-footer d-flex justify-content-between">
                     @role('kitchen')
-                    <a href="{{ route('orders.done', $order->id) }}" class="btn btn-primary mb-3">
+                    <a href="{{ route('orders.done', $order->id) }}" class="btn btn-success mb-3 @if($order->status == 'done') disabled @endif">
                         <span class="tf-icons bx bx-check"></span>Selesai
+                    </a>
+
+                    <a href="{{ route('orders.save', $order->id) }}" class="btn btn-primary mb-3">
+                        <span class="tf-icons bx bxs-save"></span>Simpan
                     </a>
                     @endrole
                 </div>

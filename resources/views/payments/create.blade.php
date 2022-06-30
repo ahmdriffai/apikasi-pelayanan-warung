@@ -26,7 +26,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-primary" @if($order->status == 'paid') disabled @endif>
-                        Bayar
+                        Simpan
                     </button>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                         </div>
 
                         <a href="{{ route('orders.index') }}" class="btn btn-primary my-3">
-                            <span class="tf-icons bx bx-printer"></span>&nbsp; Cetak Struk
+                            <span class="tf-icons bx bx-printer"></span>&nbsp; Print
                         </a>
                     </div>
                 </div>

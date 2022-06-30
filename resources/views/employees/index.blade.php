@@ -2,14 +2,14 @@
 
 @section('content')
     <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">
-        <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Tambah Karyawan
+        <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Tambah Pengguna
     </a>
     <div class="card py-2 px-2">
         <div class="row">
             <div class="col-md-6">
                 <h5 class="card-header d-flex align-items-center">
                     <i class="menu-icon tf-icons bx bx-user"></i>
-                    Daftar Karyawan</h5>
+                    Daftar Pengguna</h5>
             </div>
         </div>
         <div class="text-nowrap table-responsive">

@@ -1,3 +1,4 @@
+@role('admin')
 <!-- Dashboard -->
 <li class="menu-item">
     <a href="{{ route('home') }}" class="menu-link">
@@ -6,7 +7,6 @@
     </a>
 </li>
 
-@role('admin')
 @include('components.menu-admin')
 @endrole
 

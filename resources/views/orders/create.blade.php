@@ -25,7 +25,7 @@
                         <select name="table_id" class="form-control">
                             <option value="">Pilih Meja</option>
                             @foreach($tables as $table)
-                            <option value="{{ $table->id }}">{{ $table->name }}</option>
+                            <option value="{{ $table->id }}">{{ $table->number }}</option>
                             @endforeach
                         </select>
                     </div>

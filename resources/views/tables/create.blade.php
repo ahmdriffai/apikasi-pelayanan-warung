@@ -12,14 +12,7 @@
             <div class="mb-3">
                 <label class="form-label" for="basic-default-email">Nomer Meja <span class="text-danger">*</span></label>
                 <div class="input-group input-group-merge">
-                    {!! Form::text('number', null, array('placeholder' => 'Nomer Meja','class' => 'form-control')) !!}
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label class="form-label" for="basic-default-email">Nama Meja <span class="text-danger">*</span></label>
-                <div class="input-group input-group-merge">
-                    {!! Form::text('name', null, array('placeholder' => 'Nama Meja','class' => 'form-control')) !!}
+                    {!! Form::number('number', null, array('placeholder' => 'Nomer Meja','class' => 'form-control')) !!}
                 </div>
             </div>
 

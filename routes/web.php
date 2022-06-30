@@ -50,6 +50,7 @@ Route::middleware(['auth'])->group(function() {
     Route::get('orders/cancel/{id}', [\App\Http\Controllers\OrderController::class, 'cancel'])->name('orders.cancel');
     Route::get('orders/process/{id}', [\App\Http\Controllers\OrderController::class, 'process'])->name('orders.process');
     Route::get('orders/paid/{id}', [\App\Http\Controllers\OrderController::class, 'paid'])->name('orders.paid');
+    Route::get('orders/save/{id}', [\App\Http\Controllers\OrderController::class, 'save'])->name('orders.save');
 
     // payment
     Route::resource('payments', \App\Http\Controllers\PaymentController::class)->only(['index', 'store']);

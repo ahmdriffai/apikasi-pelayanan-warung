@@ -13,8 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('payments', function (Blueprint $table) {
-            $table->integer('stroke_path')->nullable();
+        Schema::table('tables', function (Blueprint $table) {
+            $table->dropColumn('name');
         });
     }
 
@@ -25,8 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('payments', function (Blueprint $table) {
-            $table->dropColumn('stroke_path');
+        Schema::table('tables', function (Blueprint $table) {
+            $table->string( 'name');
         });
     }
 };

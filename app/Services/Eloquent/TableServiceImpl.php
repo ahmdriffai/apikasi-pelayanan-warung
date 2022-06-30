@@ -14,13 +14,11 @@ class TableServiceImpl implements TableService
     function addTable(TableAddRequest $request): Table
     {
         $number = $request->input('number');
-        $name = $request->input('name');
 
         try {
             DB::beginTransaction();
             $table = new Table([
                 'number' => $number,
-                'name' => $name,
             ]);
             $table->save();
 
