@@ -9,6 +9,7 @@ use App\Http\Requests\EmployeeUpdateRequest;
 use App\Models\Employee;
 use App\Models\User;
 use App\Services\EmployeeService;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use SebastianBergmann\Diff\Exception;
@@ -147,5 +148,12 @@ class EmployeeServiceImpl implements EmployeeService
         }
 
         return $employee;
+    }
+
+    function list(string $key = '', int $size = 10): LengthAwarePaginator
+    {
+        $paginate = Employee::where('name', 'like' ,'%'.$key.'%')->orderBy('created_at', 'DESC')
+            ->paginate(10);
+        return $paginate;
     }
 }

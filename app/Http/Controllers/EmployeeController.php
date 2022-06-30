@@ -25,8 +25,9 @@ class EmployeeController extends Controller
     public function index(Request $request)
     {
         $title = 'Pengguna';
+        $key = $request->query('key') ?? '';
         $paginate = 10;
-        $employees= Employee::paginate($paginate);
+        $employees= $this->employeeService->list($key, $paginate);
         return view('employees.index', compact('employees', 'title'))
             ->with('i', ($request->input('page', 1) - 1) * $paginate);
 

@@ -1,6 +1,20 @@
 @extends('layouts.template')
 
 @section('content')
+    <div class="row mb-3">
+        <div class="col-md-5">
+            {!! Form::open(array('route' => 'employees.index','method'=>'GET')) !!}
+            <div class="input-group input-group-merge">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+
+                {!! Form::text('key', $_GET['key'] ?? '', array('placeholder' => 'Search...','class' => 'form-control')) !!}
+
+                <button type="submit" class="btn btn-primary">Cari</button>
+            </div>
+            {!! Form::close() !!}
+        </div>
+    </div>
+
     <a href="{{ route('employees.create') }}" class="btn btn-primary mb-3">
         <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Tambah Pengguna
     </a>
