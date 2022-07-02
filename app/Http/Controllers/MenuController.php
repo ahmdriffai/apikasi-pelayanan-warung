@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use App\Exceptions\InvariantException;
 use App\Helper\Media;
 use App\Http\Requests\MenuAddRequest;
+use App\Http\Requests\MenuUpdateRequest;
 use App\Models\Category;
 use App\Models\Menu;
 use App\Models\MenuCart;
 use App\Services\MenuService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Nette\Utils\ImageException;
 
 class MenuController extends Controller
 {
@@ -81,30 +83,27 @@ class MenuController extends Controller
         return view('menus.edit', compact('menu', 'categories'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(MenuUpdateRequest $request, $id)
     {
+        $image = $request->file('image');
         try {
-            $this->menuService;
+            $menu = $this->menuService->update($request, $id);
+            if ($image != null) {
+                $this->menuService->updateImage($id, $image);
+            }
+            return redirect()->route('menus.index')->with('success', 'Berhasil mengubah menu');
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        try {
+            $this->menuService->delete($id);
+            return redirect()->route('menus.index')->with('success', 'Berhasil mengubah menu');
+        }catch (ImageException$exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
     }
 }

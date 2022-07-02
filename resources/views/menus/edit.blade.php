@@ -37,7 +37,7 @@
                         <div class="mb-3">
                             <label class="form-label" for="basic-default-email">Gambar <span class="text-danger">*</span></label>
                             <br>
-                            <img src="{{ $menu->imageUrl }}" class="img-fluid mb-2" width="200px">
+                            <img src="{{ $menu->image_url }}" class="img-fluid mb-2" width="200px">
                             <div class="input-group input-group-merge">
                                 {!! Form::file('image', array('placeholder' => '10.000','class' => 'form-control')) !!}
                             </div>
