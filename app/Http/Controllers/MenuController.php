@@ -31,7 +31,7 @@ class MenuController extends Controller
         $paginate = 10;
         $categories = Category::all();
         $menuCarts = MenuCart::where('user_id', Auth::user()->id)->get();
-        $data = Menu::orderBy('created_at', 'DESC')->paginate($paginate);
+        $data = $this->menuService->list($request->query('key') ?? '', $paginate);
         return view('menus.index', compact('data', 'title', 'categories', 'menuCarts'))
             ->with('i', ($request->input('page', 1) - 1) * $paginate);
     }

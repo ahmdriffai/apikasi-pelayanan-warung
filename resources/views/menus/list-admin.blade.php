@@ -1,12 +1,26 @@
 <a href="{{ route('menus.create') }}" class="btn btn-primary mb-3">
     <span class="tf-icons bx bx-add-to-queue"></span>&nbsp; Tambah Menu
 </a>
-<div class="card py-2 px-2">
-    <div class="row">
-        <div class="col-md-6">
-            <h5 class="card-header">Daftar User</h5>
-        </div>
+<div class="card">
+    <div class="d-flex align-items-center flex-row justify-content-around">
+        <h5 class="card-header flex-grow-1">List Pengabdian</h5>
+        <form method="get" action="">
+            <div class="input-group input-group-merge px-5">
+                <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
+                <input type="hidden" value="100" name="size">
+                <input
+                    type="text"
+                    name="key"
+                    class="form-control"
+                    placeholder="Search..."
+                    aria-label="Search..."
+                    aria-describedby="basic-addon-search31"
+                    value="{{ $_GET['key'] ?? '' }}"
+                />
+            </div>
+        </form>
     </div>
+
     <div class="text-nowrap table-responsive">
         <table class="table">
             <thead>
