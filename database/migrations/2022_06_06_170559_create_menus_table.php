@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('name');
             $table->integer('price');
             $table->string('description');
-            $table->string('imageUrl');
+            $table->string('image_url')->nullable();
+            $table->string('image_path')->nullable();
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
         });

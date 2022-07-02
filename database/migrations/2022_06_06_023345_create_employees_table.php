@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('telp');
-            $table->string('imageUrl');
+            $table->string('image_url')->nullable();
+            $table->string('image_path')->nullable();
             $table->foreignId('user_id')->nullable();
             $table->string('address');
             $table->timestamps();

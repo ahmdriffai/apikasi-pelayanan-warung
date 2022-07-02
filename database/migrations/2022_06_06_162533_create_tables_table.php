@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('tables', function (Blueprint $table) {
             $table->id();
             $table->integer('number');
-            $table->string('name')->nullable();
             $table->boolean('is_available')->default(true);
             $table->timestamps();
         });

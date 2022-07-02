@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('order_id')->constrained();
             $table->integer('amount_paid');
             $table->date('date_paid');
+            $table->string('stroke_url')->nullable();
+            $table->string('stroke_path')->nullable();
             $table->timestamps();
         });
     }
