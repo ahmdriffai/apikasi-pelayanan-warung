@@ -39,8 +39,6 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('tables', \App\Http\Controllers\TableController::class);
     // Menu
     Route::resource('menus', \App\Http\Controllers\MenuController::class);
-    Route::get('menu/search', [\App\Http\Controllers\MenuController::class, 'search'])->name('menus.search');
-
     // menu cart
     Route::resource('menu-carts', \App\Http\Controllers\MenuCartController::class)->except(['destroy']);
     Route::get('menu-carts/{id}/delete', [\App\Http\Controllers\MenuCartController::class, 'delete'])->name('menu-carts.delete');

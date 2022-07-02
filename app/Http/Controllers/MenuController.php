@@ -38,20 +38,6 @@ class MenuController extends Controller
             ->with('i', ($request->input('page', 1) - 1) * $paginate);
     }
 
-    public function search(Request $request) {
-        $key = $request->input('key');
-
-        $title = 'Menu';
-        $paginate = 10;
-        $menuCarts = MenuCart::where('user_id', Auth::user()->id)->get();
-        $categories = Category::with('menus')
-            ->whereRelation('menus', 'name', 'like', '%'.$key.'%')
-            ->get();
-        $data = Menu::where('name', 'like', '%'.$key.'%')->orderBy('created_at', 'DESC')->paginate($paginate);
-        return view('menus.index', compact('data', 'title', 'categories', 'menuCarts'))
-            ->with('i', ($request->input('page', 1) - 1) * $paginate);
-    }
-
     public function create()
     {
         $categories = Category::all()->pluck('name' , 'id');
