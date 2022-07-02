@@ -61,7 +61,7 @@ class MenuController extends Controller
         try {
             $result = $this->menuService->addMenu($request);
 
-            $this->menuService->addImageUrl($result->id, $request->file('image'));
+            $this->menuService->addImage($result->id, $request->file('image'));
 
             return redirect()->route('menus.index')->with('success', 'Berhasil Menambah Menu Baru ');
         }catch (InvariantException $exception) {
