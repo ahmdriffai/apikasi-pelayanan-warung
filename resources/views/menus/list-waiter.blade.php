@@ -50,9 +50,9 @@
                             <button type="submit" class="btn btn-primary mb-3">
                                 <span class="tf-icons bx bx-cart"></span>&nbsp; Tambah Keranjang
                             </button>
-                            <a href="{{ route('menus.create') }}" class="btn btn-info mb-3">
-                                <span class="tf-icons bx bx-show"></span>&nbsp; Detail
-                            </a>
+{{--                            <a href="{{ route('menus.create') }}" class="btn btn-info mb-3">--}}
+{{--                                <span class="tf-icons bx bx-show"></span>&nbsp; Detail--}}
+{{--                            </a>--}}
                             {!! Form::close() !!}
                         </div>
                     </div>

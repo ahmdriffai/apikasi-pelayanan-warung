@@ -49,7 +49,7 @@
                             </div>
                             <div class="form-text">* keterangan makanan misal : bahan, bentuk, dll</div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Send</button>
+                        <button type="submit" class="btn btn-primary">Ubah Data</button>
                     </form>
                 </div>
             </div>

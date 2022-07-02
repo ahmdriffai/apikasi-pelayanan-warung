@@ -10,7 +10,7 @@
         <div class="card-body">
 
             <div class="mb-3">
-                <label class="form-label" for="basic-default-email">Email <span class="text-danger">*</span></label>
+                <label class="form-label" for="basic-default-email">Kategori <span class="text-danger">*</span></label>
                 <div class="input-group input-group-merge">
                     {!! Form::text('name', null, array('placeholder' => 'Nama Kategori','class' => 'form-control')) !!}
                 </div>

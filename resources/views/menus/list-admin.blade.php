@@ -42,9 +42,9 @@
                     </td>
                     <td><strong>Rp. {{ number_format($value->price) }}</strong></td>
                     <td>
-                        <a class="btn btn-sm btn-info" href="{{ route('menus.show',$value->id) }}">
-                            <i class="bx bx-show-alt me-1"></i> Lihat
-                        </a>
+{{--                        <a class="btn btn-sm btn-info" href="{{ route('menus.show',$value->id) }}">--}}
+{{--                            <i class="bx bx-show-alt me-1"></i> Lihat--}}
+{{--                        </a>--}}
                         <a class="btn btn-sm btn-primary" href="{{ route('menus.edit',$value->id) }}">
                             <i class="bx bx-edit-alt me-1"></i> Edit
                         </a>
