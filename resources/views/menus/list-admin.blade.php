@@ -3,7 +3,7 @@
 </a>
 <div class="card">
     <div class="d-flex align-items-center flex-row justify-content-around">
-        <h5 class="card-header flex-grow-1">List Pengabdian</h5>
+        <h5 class="card-header flex-grow-1">List Menu</h5>
         <form method="get" action="">
             <div class="input-group input-group-merge px-5">
                 <span class="input-group-text" id="basic-addon-search31"><i class="bx bx-search"></i></span>
