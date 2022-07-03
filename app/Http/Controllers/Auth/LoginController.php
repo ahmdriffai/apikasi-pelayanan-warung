@@ -38,6 +38,9 @@ class LoginController extends Controller
         if (auth()->user()->getRoleNames()->first() == 'admin') {
             return '/home';
         }
+        if (auth()->user()->getRoleNames()->first() == 'waiter') {
+            return '/menus';
+        }
         return '/orders';
     }
 
