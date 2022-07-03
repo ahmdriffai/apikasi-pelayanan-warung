@@ -23,7 +23,7 @@
                             <i class="bx bx-edit-alt me-1"></i> Edit
                         </a>
                         {!! Form::open(['method' => 'DELETE','route' => ['tables.destroy', $table->id],'style'=>'display:inline']) !!}
-                        <button class="btn btn-sm btn-danger">
+                        <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')">
                             <i class="bx bx-trash me-1"></i> Hapus
                         </button>
                         {!! Form::close() !!}

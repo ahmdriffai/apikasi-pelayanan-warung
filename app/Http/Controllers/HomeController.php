@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Employee;
 use App\Models\Menu;
 use App\Models\Payment;
 use App\Models\User;
@@ -30,7 +31,7 @@ class HomeController extends Controller
     {
         $menu = Menu::all()->count();
         $category = Category::all()->count();
-        $user = User::all()->count();
+        $user = Employee::all()->count();
         $payment = Payment::select(DB::raw('sum(amount_paid) as `data`'), DB::raw("DATE_FORMAT(created_at, '%M') name_month"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
             ->groupby('year', 'month')
             ->get();
