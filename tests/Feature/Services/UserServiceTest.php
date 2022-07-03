@@ -3,6 +3,7 @@
 namespace Tests\Feature\Services;
 
 use App\Http\Requests\UserAddRequest;
+use App\Http\Requests\UserChangePasswordRequest;
 use App\Models\Employee;
 use App\Models\User;
 use App\Services\UserService;
@@ -47,6 +48,21 @@ class UserServiceTest extends TestCase
         $user = User::find($result->id);
 
         self::assertTrue(Hash::check($result->password, $user->password));
+    }
+
+    public function test_change_password()
+    {
+        $user = User::factory()->create();
+
+        $request = new UserChangePasswordRequest([
+            'old_password' => 'password',
+            'new_password' => 'ganti password',
+        ]);
+
+        $result = $this->userService->changePassword($request, $user->id);
+
+        self::assertTrue(Hash::check('ganti password' ,$result->password ));
+
     }
 
 

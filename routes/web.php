@@ -31,8 +31,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::middleware(['auth'])->group(function() {
     Route::resource('roles', \App\Http\Controllers\RoleController::class);
     // user
-    Route::resource('users', \App\Http\Controllers\UserController::class);
-    Route::post('users/search', [\App\Http\Controllers\UserController::class, 'search'])->name('users.search');
+    Route::resource('users', \App\Http\Controllers\UserController::class)->except(['show', 'delete']);
+    Route::get('users/change-password', [\App\Http\Controllers\UserController::class, 'changePasswordGet'])->name('users.change-password-get');
+    Route::post('users/change-password', [\App\Http\Controllers\UserController::class, 'changePasswordPost'])->name('users.change-password-post');
     // category
     Route::resource('categories', \App\Http\Controllers\CategoryController::class)->except(['create', 'show']);
     // Table
