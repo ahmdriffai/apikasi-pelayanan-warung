@@ -94,7 +94,6 @@ class EmployeeServiceTest extends TestCase
             'name' => 'test',
             'telp' => '08xx',
             'address' => 'test',
-            'email' => 'test@mail.test',
             'roles' => 'admin',
         ]);
 
@@ -116,7 +115,6 @@ class EmployeeServiceTest extends TestCase
             'name' => 'test',
             'telp' => '08xx',
             'address' => 'test',
-            'email' => 'test@mail.test',
             'roles' => 'admin',
         ]);
 

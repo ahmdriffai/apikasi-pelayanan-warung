@@ -56,14 +56,11 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="{{ route('employees.show',$value->id) }}">
-                                <i class="bx bx-show-alt me-1"></i> Lihat
-                            </a>
                             <a class="btn btn-sm btn-primary" href="{{ route('employees.edit',$value->id) }}">
                                 <i class="bx bx-edit-alt me-1"></i> Edit
                             </a>
                             {!! Form::open(['method' => 'DELETE','route' => ['employees.destroy', $value->id],'style'=>'display:inline']) !!}
-                            <button class="btn btn-sm btn-danger">
+                            <button class="btn btn-sm btn-danger" onclick="return confirm('Apakah anda yakin ingin menghapus data ?')">
                                 <i class="bx bx-trash me-1"></i> Hapus
                             </button>
                             {!! Form::close() !!}

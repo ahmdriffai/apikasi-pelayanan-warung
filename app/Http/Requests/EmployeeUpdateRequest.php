@@ -13,7 +13,7 @@ class EmployeeUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -27,7 +27,6 @@ class EmployeeUpdateRequest extends FormRequest
             'name' => 'required',
             'telp' => 'required',
             'address' => 'required',
-            'email' => 'required|email|unique:users,email',
             'roles' => 'required',
         ];
     }

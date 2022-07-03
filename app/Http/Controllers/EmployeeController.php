@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\InvariantException;
 use App\Http\Requests\EmployeeAddRequest;
+use App\Http\Requests\EmployeeUpdateRequest;
 use App\Jobs\SendEMailJob;
 use App\Models\Employee;
 use App\Services\EmployeeService;
@@ -59,31 +60,34 @@ class EmployeeController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $title = 'Edit Pengguna';
+        $employee = Employee::find($id);
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $employee->user->roles->pluck('name','name')->all();
+        return view('employees.edit', compact('employee', 'title', 'roles', 'userRole'));
     }
 
 
-    public function update(Request $request, $id)
+    public function update(EmployeeUpdateRequest $request, $id)
     {
-        //
+        try {
+            $this->employeeService->updateEmployee($request, $id);
+            return redirect()->route('employees.index')->with('success', 'Data karyawan berhasil diubah');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception)->withInput($request->all());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
-        //
+        try {
+            $this->employeeService->deleteEmployee($id);
+            return redirect()->route('employees.index')->with('success', 'Data karyawan berhasil dihapus');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', "Gagal menghapus data");
+        }
     }
 }

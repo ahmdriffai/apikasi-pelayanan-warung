@@ -80,7 +80,6 @@ class EmployeeServiceImpl implements EmployeeService
         $name = $request->input('name');
         $telp = $request->input('telp');
         $address = $request->input('address');
-        $email = $request->input('email');
         $roles = $request->input('roles');
 
         try {
@@ -89,8 +88,6 @@ class EmployeeServiceImpl implements EmployeeService
             $employee->address = $address;
             $employee->save();
             if ($user != null) {
-                $user->email = $email;
-
                 $user->assignRole($roles);
                 $user->save();
             }
@@ -109,7 +106,7 @@ class EmployeeServiceImpl implements EmployeeService
                 unlink($employee->image_path);
             }
 
-            $employee->deleta();
+            $employee->delete();
         }catch (\Exception $exception) {
             throw new InvariantException($exception->getMessage());
         }
