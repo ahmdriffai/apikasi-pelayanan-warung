@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Menu;
+use App\Models\Payment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +28,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $menu = Menu::all()->count();
+        $category = Category::all()->count();
+        $user = User::all()->count();
+        $payment = Payment::select(DB::raw('sum(amount_paid) as `data`'), DB::raw("DATE_FORMAT(created_at, '%M') name_month"), DB::raw('YEAR(created_at) year, MONTH(created_at) month'))
+            ->groupby('year', 'month')
+            ->get();
+        $total_payment = Payment::sum('amount_paid');
+
+        return view('home', compact('menu', 'category', 'user', 'payment', 'total_payment'));
     }
 }
